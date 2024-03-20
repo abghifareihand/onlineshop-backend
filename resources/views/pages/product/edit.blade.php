@@ -71,8 +71,8 @@
                                                 style="max-width: 250px; max-height: 250px;">
                                         @else
                                             <label for="image-upload" id="image-label">Choose File</label>
+                                            <input type="file" name="image" id="image-upload" />
                                         @endif
-                                        <input type="file" name="image" id="image-upload" />
                                     </div>
                                 </div>
                             </div>

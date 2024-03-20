@@ -62,11 +62,21 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = $request->all();
         $product = Product::findOrFail($id);
-        $product->update($data);
+        $data = $request->all();
+
+        // Jika ada file gambar yang diunggah, simpan gambar baru
+        if ($request->file('image')) {
+            $fileName = time() . '.' . $request->image->extension();
+            $path = $request->file('image')->storeAs('products', $fileName, 'public');
+            $data['image'] = 'storage/' . $path;
+        }
+
+        $product->update($data); // Memperbarui data produk
+
         return redirect()->route('product.index')->with('success', 'Product updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.
