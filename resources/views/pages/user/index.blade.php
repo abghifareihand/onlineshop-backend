@@ -28,9 +28,9 @@
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
+                            {{-- <div class="card-header">
                                 <h4>All Users</h4>
-                            </div>
+                            </div> --}}
                             <div class="card-body">
                                 {{-- <div class="float-right">
                                     <form method="GET" action="{{ route('users.index') }}">
@@ -58,10 +58,12 @@
                                         @foreach ($users as $user)
                                             <tr>
                                                 <td>
-                                                    @if($user->roles == 'ADMIN')
-                                                        <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}" class="rounded-circle" width="35">
+                                                    @if ($user->roles == 'ADMIN')
+                                                        <img alt="image" src="{{ asset('img/avatar/avatar-1.png') }}"
+                                                            class="rounded-circle" width="35">
                                                     @else
-                                                        <img alt="image" src="{{ asset('img/avatar/avatar-2.png') }}" class="rounded-circle" width="35">
+                                                        <img alt="image" src="{{ asset('img/avatar/avatar-2.png') }}"
+                                                            class="rounded-circle" width="35">
                                                     @endif
                                                     <div class="d-inline-block ml-2">{{ $user->name }}</div>
                                                 </td>
@@ -69,9 +71,9 @@
                                                 <td>{{ $user->phone }}</td>
                                                 <td>
                                                     @if ($user->roles == 'ADMIN')
-                                                    <div class="badge badge-primary">{{ $user->roles }}</div>
+                                                        <div class="badge badge-primary">{{ $user->roles }}</div>
                                                     @else
-                                                    <div class="badge badge-success">{{ $user->roles }}</div>
+                                                        <div class="badge badge-success">{{ $user->roles }}</div>
                                                     @endif
                                                 </td>
                                                 <td>{{ $user->created_at }}</td>
@@ -117,8 +119,8 @@
 
 @push('scripts')
     <!-- JS Libraies -->
-    <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
+    <script src="{{ asset('library/sweetalert/dist/sweetalert.min.js') }}"></script>
 
     <!-- Page Specific JS File -->
-    <script src="{{ asset('js/page/features-posts.js') }}"></script>
+    <script src="{{ asset('js/page/modules-sweetalert.js') }}"></script>
 @endpush

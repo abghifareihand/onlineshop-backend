@@ -66,7 +66,8 @@
                                         <span class="selectgroup-button">STAFF</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="roles" value="USER" class="selectgroup-input" checked="">
+                                        <input type="radio" name="roles" value="USER" class="selectgroup-input"
+                                            checked="">
                                         <span class="selectgroup-button">USER</span>
                                     </label>
                                 </div>
@@ -93,7 +94,7 @@
                             </div>
                         </div>
                         <div class="card-footer text-right">
-                            <button class="btn btn-primary">Submit</button>
+                            <button class="btn btn-primary confirm-submit">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -104,4 +105,9 @@
 @endsection
 
 @push('scripts')
+    <!-- JS Libraies -->
+    <script src="{{ asset('library/sweetalert/dist/sweetalert.min.js') }}"></script>
+
+    <!-- Page Specific JS File -->
+    <script src="{{ asset('js/page/modules-sweetalert.js') }}"></script>
 @endpush

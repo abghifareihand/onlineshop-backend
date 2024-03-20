@@ -18,6 +18,16 @@
                     </i> <span>Users</span>
                 </a>
             </li>
+            <li class="{{ Request::is('category') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('category.index') }}"><i class="fa fa-th-list">
+                    </i> <span>Category</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('product') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('product.index') }}"><i class="fa fa-shopping-basket">
+                    </i> <span>Product</span>
+                </a>
+            </li>
         </ul>
     </aside>
 </div>
