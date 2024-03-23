@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
@@ -21,6 +22,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', [AuthController::class, 'fetch']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::put('user', [AuthController::class, 'update']);
+    Route::apiResource('address', AddressController::class);
 });
 
 Route::post('register', [AuthController::class, 'register']);

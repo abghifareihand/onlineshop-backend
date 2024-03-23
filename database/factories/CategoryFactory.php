@@ -17,11 +17,11 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        $categoryNames = ['Electronics', 'Clothing', 'Kitchen', 'Books', 'Sports', 'Beauty', 'Toys', 'Automotive', 'Health', 'Furniture', 'Home', 'Tools',];
+        $categoryNames = ['Best Seller', 'Top Rated', 'Flash Sale', 'Discount', 'Special'];
         return [
-            'name' => Arr::random($categoryNames),
+            'name' => $this->faker->randomElement($categoryNames),
             'description' => fake()->sentence(),
-            'image' => 'https://via.placeholder.com/300',
+            'image' => fake()->imageUrl(),
         ];
     }
 }

@@ -23,6 +23,14 @@ class UserSeeder extends Seeder
             'password' => Hash::make('admin123'),
         ]);
 
-        User::factory(30)->create();
+        User::factory()->create([
+            'name' => 'Abghi Fareihan',
+            'email' => 'abghi@gmail.com',
+            'phone' => '087777711022',
+            'roles' => 'USER',
+            'password' => Hash::make('abghi123'),
+        ]);
+
+        User::factory(18)->create();
     }
 }
