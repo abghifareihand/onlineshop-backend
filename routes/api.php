@@ -3,7 +3,9 @@
 use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\API\CallbackController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,13 +21,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
+    // get user and update
     Route::get('user', [AuthController::class, 'fetch']);
-    Route::post('logout', [AuthController::class, 'logout']);
     Route::put('user', [AuthController::class, 'update']);
+
+    // logout
+    Route::post('logout', [AuthController::class, 'logout']);
+
+    // adress apiresource
     Route::apiResource('address', AddressController::class);
+
+    // order
+    Route::post('order', [OrderController::class, 'order']);
 });
 
+// register
 Route::post('register', [AuthController::class, 'register']);
+
+// login
 Route::post('login', [AuthController::class, 'login']);
 
 //category
@@ -33,3 +46,6 @@ Route::get('categories', [CategoryController::class, 'index']);
 
 //product
 Route::get('products', [ProductController::class, 'index']);
+
+// callback midtrans
+Route::post('callback', [CallbackController::class, 'callback']);
