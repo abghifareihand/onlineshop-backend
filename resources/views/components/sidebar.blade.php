@@ -28,6 +28,11 @@
                     </i> <span>Product</span>
                 </a>
             </li>
+            <li class="{{ Request::is('order') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('order.index') }}"><i class="fa fa-shopping-basket">
+                    </i> <span>Order</span>
+                </a>
+            </li>
         </ul>
     </aside>
 </div>
