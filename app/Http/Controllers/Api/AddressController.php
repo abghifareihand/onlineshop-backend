@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,12 +14,13 @@ class AddressController extends Controller
      */
     public function index(Request $request)
     {
-        $addresses = DB::table('addresses')->where('user_id', $request->user()->id)->get();
+        $address = Address::where('user_id', $request->user()->id)->get();
+
         return response()->json([
             'code' => 200,
             'success' => true,
             'message' => 'Get address success',
-            'data' => $addresses,
+            'data' => $address,
         ]);
     }
 
@@ -27,19 +29,19 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-        $address = DB::table('addresses')->insert([
-            'name' => $request->name,
+        $address = Address::create([
+            'user_id' => $request->user()->id,
+            'name' => $request->user()->name,
+            'phone' => $request->user()->phone,
             'full_address' => $request->full_address,
-            'phone' => $request->phone,
             'prov_id' => $request->prov_id,
             'city_id' => $request->city_id,
             'district_id' => $request->district_id,
             'postal_code' => $request->postal_code,
-            'user_id' => $request->user()->id,
-            'is_default' => $request->is_default,
-
+            'is_default' => false,
         ]);
 
+        // Mengembalikan respons JSON
         if ($address) {
             return response()->json([
                 'code' => 201,
@@ -51,8 +53,8 @@ class AddressController extends Controller
             return response()->json([
                 'code' => 400,
                 'success' => false,
-                'message' => 'Address created error',
-            ],400);
+                'message' => 'Address creation failed',
+            ], 400);
         }
     }
 
