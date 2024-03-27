@@ -19,7 +19,6 @@ class OrderController extends Controller
             'payment_method' => 'required',
             'shipping_service' => 'required',
             'shipping_cost' => 'required',
-            'total_cost' => 'required',
             'items' => 'required',
         ]);
 
